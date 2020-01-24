@@ -1,5 +1,7 @@
 import React from 'react';
-import {Grommet} from 'grommet';
+import { Grommet, Heading, Main, Paragraph, Button, Box } from 'grommet';
+import { Add } from 'grommet-icons';
+import ListaDeTapiocas from './components/listaDeTapiocas'
 
 function App() {
 
@@ -14,21 +16,32 @@ function App() {
   };
 
 
+
   return (
     <Grommet theme={theme} full>
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+
+      <Main pad="large">
+        
+        <Box pad='medium' margin='medium'>
+
+          <Heading>Tapiocaria React</Heading>
+
+          <Paragraph>CRUD de tapiocas feito com react</Paragraph>
+        </Box>
+
+        <ListaDeTapiocas />
+
+        <Box pad='medium'>
+
+          <Button
+            icon={<Add />}
+            label="Adicionar Nova Tapioca"
+            primary='true'
+            onClick={() => { }}
+          />
+        </Box>
+      </Main>
+
     </Grommet>
   );
 }
