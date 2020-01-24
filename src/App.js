@@ -20,26 +20,30 @@ function App() {
   return (
     <Grommet theme={theme} full>
 
-      <Main pad="large">
-        
-        <Box pad='medium' margin='medium'>
+      <Main pad="large" margin='medium'>
+
+        <Box pad='large' margin='medium'>
 
           <Heading>Tapiocaria React</Heading>
 
           <Paragraph>CRUD de tapiocas feito com react</Paragraph>
+
         </Box>
 
-        <ListaDeTapiocas />
+        <Box pad='large' margin='medium'>
+          <ListaDeTapiocas />
+        </Box>
 
-        <Box pad='medium'>
+        <Box pad='large' margin='medium'>
 
           <Button
             icon={<Add />}
             label="Adicionar Nova Tapioca"
-            primary='true'
+            primary={true}
             onClick={() => { }}
           />
         </Box>
+
       </Main>
 
     </Grommet>
