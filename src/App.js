@@ -1,7 +1,8 @@
 import React from 'react';
-import { Grommet, Heading, Main, Paragraph, Button, Box } from 'grommet';
-import { Add } from 'grommet-icons';
+import { Grommet, Heading, Paragraph, Box } from 'grommet';
 import ListaDeTapiocas from './components/listaDeTapiocas'
+import FormDeTapioca from './components/formDeTapioca';
+import { Switch, Route } from 'react-router-dom';
 
 function App() {
 
@@ -15,36 +16,38 @@ function App() {
     },
   };
 
-
-
   return (
     <Grommet theme={theme} full>
 
-      <Main pad="large" margin='medium'>
+      <Box
+        tag='header'
+        align='center'
+        background='brand'
+      >
 
-        <Box pad='large' margin='medium'>
+        <Box>
 
           <Heading>Tapiocaria React</Heading>
-
           <Paragraph>CRUD de tapiocas feito com react</Paragraph>
 
         </Box>
 
-        <Box pad='large' margin='medium'>
-          <ListaDeTapiocas />
+        <Box pad='large'>
+          <Switch>
+
+            <Route path='/'>
+              <ListaDeTapiocas />
+            </Route>
+
+            <Route path='/tapiocas/criar'>
+              <FormDeTapioca/>
+            </Route>
+
+          </Switch>
         </Box>
 
-        <Box pad='large' margin='medium'>
 
-          <Button
-            icon={<Add />}
-            label="Adicionar Nova Tapioca"
-            primary={true}
-            onClick={() => { }}
-          />
-        </Box>
-
-      </Main>
+      </Box>
 
     </Grommet>
   );

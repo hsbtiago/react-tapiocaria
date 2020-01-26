@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
-import { List } from 'grommet';
+import { List, Box, Button } from 'grommet';
+import { Add } from 'grommet-icons';
+import { Link } from 'react-router-dom';
+
 
 function ListaDeTapiocas() {
 
@@ -27,13 +30,26 @@ function ListaDeTapiocas() {
     }, []);
 
     return (
-        <List
-            pad='medium'
-            margin='medium'
-            primaryKey='recheio'
-            secondaryKey='preco'
-            data={tapiocas}
-        />
+        <>
+            <List
+                pad='medium'
+                margin='medium'
+                primaryKey='recheio'
+                secondaryKey='preco'
+                data={tapiocas}
+            />
+
+            <Box>
+                <Link to='/'> Voltar</Link>
+                <Link to='/tapiocas/criar'> Adicionar Tapioca</Link>
+                <Button
+                    icon={<Add />}
+                    label="Adicionar Nova Tapioca"
+                    primary={true}
+                    onClick={() => { }}
+                />
+            </Box>
+        </>
     );
 }
 
