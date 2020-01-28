@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
-import { List, Box, Button } from 'grommet';
+import { List, Box, Button, Paragraph } from 'grommet';
 import { Add } from 'grommet-icons';
 import { Link } from 'react-router-dom';
 
@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 function ListaDeTapiocas() {
 
     const [tapiocas, setTapiocas] = useState([]);
+    const [loading, setLoading] = useState(['Carregando...']);
 
     useEffect(() => {
 
@@ -23,6 +24,7 @@ function ListaDeTapiocas() {
             });
 
             setTapiocas(listaFormatada);
+            setLoading('');
         }
 
         BuscarTapiocas();
@@ -31,6 +33,22 @@ function ListaDeTapiocas() {
 
     return (
         <>
+            <Box>
+
+                <Link to='/tapiocas/criar'>
+                    <Button
+                        icon={<Add />}
+                        label="Adicionar Nova Tapioca"
+                        primary={true}
+                    />
+                </Link>
+
+            </Box>
+
+            <Paragraph>
+                {loading}
+            </Paragraph>
+
             <List
                 pad='medium'
                 margin='medium'
@@ -39,16 +57,6 @@ function ListaDeTapiocas() {
                 data={tapiocas}
             />
 
-            <Box>
-                <Link to='/'> Voltar</Link>
-                <Link to='/tapiocas/criar'> Adicionar Tapioca</Link>
-                <Button
-                    icon={<Add />}
-                    label="Adicionar Nova Tapioca"
-                    primary={true}
-                    onClick={() => { }}
-                />
-            </Box>
         </>
     );
 }

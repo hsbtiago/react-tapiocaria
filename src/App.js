@@ -32,15 +32,19 @@ function App() {
 
         </Box>
 
-        <Box pad='large'>
+        <Box pad="large">
           <Switch>
 
-            <Route path='/'>
+            <Route exact path="/">
               <ListaDeTapiocas />
             </Route>
 
-            <Route path='/tapiocas/criar'>
-              <FormDeTapioca/>
+            <Route exact path="/tapiocas/criar">
+              <FormDeTapioca />
+            </Route>
+
+            <Route exact path="/tapiocas/editar/:id">
+              <FormDeTapioca />
             </Route>
 
           </Switch>
