@@ -25,32 +25,26 @@ function App() {
         background='brand'
       >
 
-        <Box>
+        <Heading>Tapiocaria React</Heading>
+        <Paragraph>CRUD de tapiocas feito com react</Paragraph>
 
-          <Heading>Tapiocaria React</Heading>
-          <Paragraph>CRUD de tapiocas feito com react</Paragraph>
+      </Box>
+      <Box pad="large" align='center'>
+        <Switch>
 
-        </Box>
+          <Route exact path="/">
+            <ListaDeTapiocas />
+          </Route>
 
-        <Box pad="large">
-          <Switch>
+          <Route exact path="/tapiocas/criar">
+            <FormDeTapioca />
+          </Route>
 
-            <Route exact path="/">
-              <ListaDeTapiocas />
-            </Route>
+          <Route exact path="/tapiocas/editar/:id">
+            <FormDeTapioca />
+          </Route>
 
-            <Route exact path="/tapiocas/criar">
-              <FormDeTapioca />
-            </Route>
-
-            <Route exact path="/tapiocas/editar/:id">
-              <FormDeTapioca />
-            </Route>
-
-          </Switch>
-        </Box>
-
-
+        </Switch>
       </Box>
 
     </Grommet>
