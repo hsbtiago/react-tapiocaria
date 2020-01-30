@@ -18,7 +18,6 @@ function ListaDeTapiocas() {
             const response = await api.get('/tapiocas');
 
             const listaFormatada = response.data.map(a => {
-                console.log(a);
 
                 return {
                     recheio: `Tapioca de ${a.recheio}`,
@@ -56,7 +55,7 @@ function ListaDeTapiocas() {
             <div className="list">
                 {
                     tapiocas.map(tapioca => (
-                        <Link to={`/tapiocas/editar/${tapioca.id}`} className='list-item'>
+                        <Link key={tapioca.id} to={`/tapiocas/editar/${tapioca.id}`} className='list-item'>
                             <div className='texto-primario'> {tapioca.recheio} </div>
                             <div className='texto-secundaio'> {tapioca.preco} </div>
                         </Link>

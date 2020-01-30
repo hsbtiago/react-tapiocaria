@@ -1,25 +1,46 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import { Button, Heading, Form, FormField, Box } from 'grommet';
+import { useParams } from 'react-router'
+import { Button, Heading, Form, FormField, Box, TextInput } from 'grommet';
 import { FormPreviousLink, Save, Add } from 'grommet-icons';
 import api from '../../services/api';
 
 function FormTapioca() {
 
+    const { id } = useParams()
     const [recheio, setRecheio] = useState('');
     const [preco, setPreco] = useState('');
     const [redirect, setRedirect] = useState('');
+
+    async function BuscarTapioca() {
+
+        if (id) {
+            let response = await api.get('/tapiocas/' + id);
+            let tapioca = response.data;
+
+            setRecheio(tapioca.recheio);
+            setPreco(tapioca.preco);
+        }
+    }
 
     async function SalvarTapioca(e) {
 
         e.preventDefault();
 
-        var tapioca = { recheio, preco };
+        let tapioca = { id, recheio, preco };
 
-        await api.post('/tapiocas', tapioca);
+        if (id) {
+            await api.put('/tapiocas/' + id, tapioca);
+        }
+        else {
+            await api.post('/tapiocas', tapioca);
+        }
+
 
         setRedirect('/');
     }
+
+    useEffect(() => { BuscarTapioca() }, []);
 
     if (redirect) {
         return (<Redirect to={redirect} />)
@@ -28,15 +49,20 @@ function FormTapioca() {
     return (
         <>
             <Heading level='3' pad='medium'>
-                <Add/> Adicionar Tapioca
+                <Add /> Adicionar Tapioca
             </Heading>
 
             <Form onSubmit={SalvarTapioca}>
 
                 <Box gap='medium'>
 
-                    <FormField name="recheio" label="Recheio" required value={recheio} onChange={e => setRecheio(e.target.value)} />
-                    <FormField name="preco" label="Preço" required value={preco} onChange={e => setPreco(e.target.value)} />
+                    <FormField label="Recheio" >
+                        <TextInput required value={recheio} onChange={e => setRecheio(e.target.value)} />
+                    </FormField>
+
+                    <FormField label="Preço" >
+                        <TextInput required value={preco} onChange={e => setPreco(e.target.value)} />
+                    </FormField>
 
                     <Box direction='row' gap='medium' pad='medium'>
 
@@ -57,3 +83,4 @@ function FormTapioca() {
 }
 
 export default FormTapioca;
+
