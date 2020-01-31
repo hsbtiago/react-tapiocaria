@@ -5,7 +5,7 @@ import { Button, Heading, Form, FormField, Box, TextInput } from 'grommet';
 import { FormPreviousLink, Save, Add, Trash } from 'grommet-icons';
 import api from '../../services/api';
 
-function FormTapioca() {
+function FormTapioca({onSubmit}) {
 
     const { id } = useParams()
     const [recheio, setRecheio] = useState('');
@@ -13,7 +13,7 @@ function FormTapioca() {
     const [redirect, setRedirect] = useState('');
 
     async function ExcluirTapioca() {
-        let response = await api.delete('/tapiocas/' + id);
+        await api.delete('/tapiocas/' + id);
         setRedirect('/');
     }
 
@@ -41,7 +41,7 @@ function FormTapioca() {
             await api.post('/tapiocas', tapioca);
         }
 
-
+        onSubmit(tapioca);
         setRedirect('/');
     }
 
