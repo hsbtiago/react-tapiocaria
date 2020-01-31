@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { useParams } from 'react-router'
 import { Button, Heading, Form, FormField, Box, TextInput } from 'grommet';
-import { FormPreviousLink, Save, Add } from 'grommet-icons';
+import { FormPreviousLink, Save, Add, Trash } from 'grommet-icons';
 import api from '../../services/api';
 
 function FormTapioca() {
@@ -11,6 +11,11 @@ function FormTapioca() {
     const [recheio, setRecheio] = useState('');
     const [preco, setPreco] = useState('');
     const [redirect, setRedirect] = useState('');
+
+    async function ExcluirTapioca() {
+        let response = await api.delete('/tapiocas/' + id);
+        setRedirect('/');
+    }
 
     async function BuscarTapioca() {
 
@@ -48,36 +53,57 @@ function FormTapioca() {
 
     return (
         <>
-            <Heading level='3' pad='medium'>
-                <Add /> Adicionar Tapioca
-            </Heading>
+            <Box width='large'>
 
-            <Form onSubmit={SalvarTapioca}>
+                <Box direction='row' margin='medium'>
 
-                <Box gap='medium'>
-
-                    <FormField label="Recheio" >
-                        <TextInput required value={recheio} onChange={e => setRecheio(e.target.value)} />
-                    </FormField>
-
-                    <FormField label="Preço" >
-                        <TextInput required value={preco} onChange={e => setPreco(e.target.value)} />
-                    </FormField>
-
-                    <Box direction='row' gap='medium' pad='medium'>
-
-                        <Link to='/'>
-                            <Button
-                                icon={<FormPreviousLink />}
-                                label='Cancelar'
-                            />
-                        </Link>
-
-                        <Button type="submit" primary label="Salvar" icon={<Save />} />
+                    <Box flex='grow'>
+                        <Heading level='3' pad='medium' >
+                            <Add /> Adicionar Tapioca
+                        </Heading>
                     </Box>
+
+                    <Box justify='center'>
+                        <Button
+                            primary
+                            icon={<Trash />}
+                            label='Excluir'      
+                            color='status-critical' 
+                            onClick={ExcluirTapioca}                 
+                            />
+                    </Box>
+
                 </Box>
 
-            </Form>
+                <Form onSubmit={SalvarTapioca}>
+
+                    <Box gap='medium'>
+
+                        <FormField label="Recheio" >
+                            <TextInput required value={recheio} onChange={e => setRecheio(e.target.value)} />
+                        </FormField>
+
+                        <FormField label="Preço" >
+                            <TextInput required value={preco} onChange={e => setPreco(e.target.value)} />
+                        </FormField>
+
+                        <Box direction='row' gap='medium' pad='medium' justify='end'>
+
+                            <Link to='/'>
+                                <Button
+                                    icon={<FormPreviousLink />}
+                                    label='Cancelar'
+                                />
+                            </Link>
+
+                            <Button type="submit" primary label="Salvar" icon={<Save />}/>
+
+                        </Box>
+                    </Box>
+
+                </Form>
+            </Box>
+
         </>
     );
 }
