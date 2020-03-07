@@ -4,10 +4,12 @@
 
 .list-item{
     color: darkslategray;
-    padding: 1.8rem;;
+    padding-top: 1.8rem;
+    padding-bottom: 1.8rem;
     text-decoration: none;
     border-bottom: 1px solid lightgray;
     display: flex;
+    flex-direction: column;
 }
 
 .list-item:hover{
@@ -15,9 +17,10 @@
     background-color: whitesmoke;
 }
 
-.texto-primario{
-    flex-grow: 1;
+.texto-secundario{
+    color: grey;
 }
+
 
 footer {
     width: 100%;

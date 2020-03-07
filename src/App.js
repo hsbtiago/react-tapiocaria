@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grommet, Heading, Paragraph, Box} from 'grommet';
+import { Grommet, Heading, Text, Box } from 'grommet';
 import Routes from './routes';
 
 function App() {
@@ -20,11 +20,11 @@ function App() {
       <Box tag='header' align='center' background='brand'>
 
         <Heading>Tapiocaria React</Heading>
-        <Paragraph>CRUD de tapiocas feito com react</Paragraph>
+        <Text>CRUD de tapiocas feito com react</Text>
 
       </Box>
 
-      <Box pad="medium" gap='medium' align='center'>
+      <Box pad="large">
         <Routes />
       </Box>
 

@@ -1,24 +1,32 @@
 import React, { useState, useEffect } from 'react';
-import { Box, TextInput, Button, Footer } from 'grommet';
+import { Box, TextInput, Button, Footer, Heading } from 'grommet';
 import { Link } from 'react-router-dom';
-import { Add } from 'grommet-icons';
+import { Add, Cafeteria } from 'grommet-icons';
 import api from '../../services/api';
 import './styles.css';
 
 function ListaDeTapiocas() {
 
-    const [filtro, setFiltro] = useState('');
     const [tapiocas, setTapiocas] = useState([]);
+    const [tapiocasFiltradas, setTapiocasFiltradas] = useState([]);
     const [loading, setLoading] = useState('Carregando Tapiocas...');
 
+    function converterParaReal(numero) {
+        var numero = numero.toFixed(2).split('.');
+        numero[0] = "R$ " + numero[0].split(/(?=(?:...)*$)/).join('.');
+        return numero.join(',');
+    }
+
+
     function FiltrarLista(e) {
-        setFiltro(e.target.value)
+        const filtro = e.target.value;
+        setTapiocasFiltradas(tapiocas.filter(t => t.recheio.toLowerCase().includes(filtro)));
     }
 
     function FormatarTapioca(tapioca) {
         return {
             recheio: `Tapioca de ${tapioca.recheio}`,
-            preco: `R$ ${tapioca.preco}`,
+            preco: converterParaReal(tapioca.preco),
             id: tapioca.id
         }
     }
@@ -30,6 +38,7 @@ function ListaDeTapiocas() {
         const listaFormatada = response.data.map(FormatarTapioca);
 
         setTapiocas(listaFormatada);
+        setTapiocasFiltradas(listaFormatada);
         setLoading('');
     }
 
@@ -37,21 +46,26 @@ function ListaDeTapiocas() {
 
     return (
         <>
-            <Box pad='medium' width='large'>
-                <TextInput placeholder='Pesquisar' value={filtro} onChange={FiltrarLista} />
-                {loading}
+            <Heading level='2'>
+                <Cafeteria />
+                Cardápio de Tapiocas
+            </Heading>
 
-                <div className="list">
-                    {
-                        tapiocas.map(tapioca => (
-                            <Link key={tapioca.id} to={`/tapiocas/editar/${tapioca.id}`} className='list-item'>
-                                <div className='texto-primario'> {tapioca.recheio} </div>
-                                <div> {tapioca.preco} </div>
-                            </Link>
-                        ))
-                    }
-                </div>
-            </Box>
+
+            <TextInput placeholder='Pesquisar' onChange={FiltrarLista} />
+
+            <span> {loading} </span>
+
+            <div className="list">
+                {
+                    tapiocasFiltradas.map(tapioca => (
+                        <Link key={tapioca.id} to={`/tapiocas/editar/${tapioca.id}`} className='list-item'>
+                            <div> {tapioca.recheio} </div>
+                            <div className='texto-secundario'> {tapioca.preco}</div>
+                        </Link>
+                    ))
+                }
+            </div>
 
 
             <Footer background="brand" pad="medium" justify='end'>
