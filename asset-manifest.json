@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/react-tapiocaria/static/css/main.c2be6e6b.chunk.css",
-    "main.js": "/react-tapiocaria/static/js/main.7a7024e7.chunk.js",
-    "main.js.map": "/react-tapiocaria/static/js/main.7a7024e7.chunk.js.map",
+    "main.js": "/react-tapiocaria/static/js/main.f8e67937.chunk.js",
+    "main.js.map": "/react-tapiocaria/static/js/main.f8e67937.chunk.js.map",
     "runtime-main.js": "/react-tapiocaria/static/js/runtime-main.78ae58c5.js",
     "runtime-main.js.map": "/react-tapiocaria/static/js/runtime-main.78ae58c5.js.map",
-    "static/js/2.0022bce3.chunk.js": "/react-tapiocaria/static/js/2.0022bce3.chunk.js",
-    "static/js/2.0022bce3.chunk.js.map": "/react-tapiocaria/static/js/2.0022bce3.chunk.js.map",
+    "static/js/2.e12759e6.chunk.js": "/react-tapiocaria/static/js/2.e12759e6.chunk.js",
+    "static/js/2.e12759e6.chunk.js.map": "/react-tapiocaria/static/js/2.e12759e6.chunk.js.map",
     "index.html": "/react-tapiocaria/index.html",
-    "precache-manifest.7e14c130c81cbee6946c7f54decc7191.js": "/react-tapiocaria/precache-manifest.7e14c130c81cbee6946c7f54decc7191.js",
+    "precache-manifest.c2268a0b07241fce0d7c722c7d8d296e.js": "/react-tapiocaria/precache-manifest.c2268a0b07241fce0d7c722c7d8d296e.js",
     "service-worker.js": "/react-tapiocaria/service-worker.js",
     "static/css/main.c2be6e6b.chunk.css.map": "/react-tapiocaria/static/css/main.c2be6e6b.chunk.css.map",
-    "static/js/2.0022bce3.chunk.js.LICENSE": "/react-tapiocaria/static/js/2.0022bce3.chunk.js.LICENSE"
+    "static/js/2.e12759e6.chunk.js.LICENSE": "/react-tapiocaria/static/js/2.e12759e6.chunk.js.LICENSE"
   },
   "entrypoints": [
     "static/js/runtime-main.78ae58c5.js",
-    "static/js/2.0022bce3.chunk.js",
+    "static/js/2.e12759e6.chunk.js",
     "static/css/main.c2be6e6b.chunk.css",
-    "static/js/main.7a7024e7.chunk.js"
+    "static/js/main.f8e67937.chunk.js"
   ]
 }
