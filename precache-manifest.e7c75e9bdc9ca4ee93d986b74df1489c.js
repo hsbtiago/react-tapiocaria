@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "03c8dfd1bf33e1b1714e0fbebbe70ce0",
+    "revision": "57eb872407d917568b413da77698d78d",
     "url": "/react-tapiocaria/index.html"
   },
   {

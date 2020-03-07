@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/react-tapiocaria/precache-manifest.c2268a0b07241fce0d7c722c7d8d296e.js"
+  "/react-tapiocaria/precache-manifest.e7c75e9bdc9ca4ee93d986b74df1489c.js"
 );
 
 self.addEventListener('message', (event) => {
