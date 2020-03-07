@@ -1,8 +1,8 @@
+import { Button, Heading, Form, FormField, Box, TextInput, Footer } from 'grommet';
+import { FormPreviousLink, Save, Add, Trash, Edit } from 'grommet-icons';
 import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { useParams } from 'react-router'
-import { Button, Heading, Form, FormField, Box, TextInput, Footer } from 'grommet';
-import { FormPreviousLink, Save, Add, Trash } from 'grommet-icons';
 import api from '../../services/api';
 
 function FormTapioca() {
@@ -11,6 +11,7 @@ function FormTapioca() {
     const [recheio, setRecheio] = useState('');
     const [preco, setPreco] = useState('');
     const [redirect, setRedirect] = useState('');
+    const title = (id) ? (<span><Edit/> Editar Tapioca</span>) :  (<span><Add/> Adicionar Tapioca</span>);
 
     async function ExcluirTapioca() {
         await api.delete('/tapiocas/' + id);
@@ -54,11 +55,11 @@ function FormTapioca() {
         <>
             <Box width='large'>
 
-                <Box direction='row' margin='medium'>
+                <Box direction='row'>
 
                     <Box flex='grow'>
-                        <Heading level='3' pad='medium' >
-                            <Add /> Adicionar Tapioca
+                        <Heading level='2' pad='medium' >
+                            {title}
                         </Heading>
                     </Box>
 
@@ -85,12 +86,6 @@ function FormTapioca() {
                         <FormField label="Preço" >
                             <TextInput required value={preco} onChange={e => setPreco(e.target.value)} />
                         </FormField>
-
-                        <Box direction='row' gap='medium' pad='medium' justify='end'>
-
-
-
-                        </Box>
 
                         <Footer background="brand" pad="medium" justify='around'>
 

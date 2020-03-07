@@ -33,20 +33,14 @@ function ListaDeTapiocas() {
         setLoading('');
     }
 
-    useEffect(() => {
-
-        BuscarTapiocas();
-
-    }, []);
+    useEffect(() => { BuscarTapiocas() }, []);
 
     return (
         <>
             <Box margin='medium'>
                 <TextInput placeholder='Pesquisar' value={filtro} onChange={FiltrarLista} />
-            </Box>
-            <p>
                 {loading}
-            </p>
+            </Box>
 
             <div className="list">
                 {
@@ -65,7 +59,6 @@ function ListaDeTapiocas() {
                     <Button
                         icon={<Add />}
                         label="Adicionar Tapioca"
-                        primary={true}
                     />
                 </Link>
             </Footer>

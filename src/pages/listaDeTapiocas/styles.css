@@ -6,6 +6,7 @@
 }
 
 .list-item{
+    color: darkslategray;
     padding: 1.8rem;;
     text-decoration: none;
     border-bottom: 1px solid lightgray;
