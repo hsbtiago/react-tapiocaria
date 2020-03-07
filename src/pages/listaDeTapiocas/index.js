@@ -37,21 +37,21 @@ function ListaDeTapiocas() {
 
     return (
         <>
-            <Box margin='medium'>
+            <Box pad='medium' width='large'>
                 <TextInput placeholder='Pesquisar' value={filtro} onChange={FiltrarLista} />
                 {loading}
-            </Box>
 
-            <div className="list">
-                {
-                    tapiocas.map(tapioca => (
-                        <Link key={tapioca.id} to={`/tapiocas/editar/${tapioca.id}`} className='list-item'>
-                            <div className='texto-primario'> {tapioca.recheio} </div>
-                            <div className='texto-secundaio'> {tapioca.preco} </div>
-                        </Link>
-                    ))
-                }
-            </div>
+                <div className="list">
+                    {
+                        tapiocas.map(tapioca => (
+                            <Link key={tapioca.id} to={`/tapiocas/editar/${tapioca.id}`} className='list-item'>
+                                <div className='texto-primario'> {tapioca.recheio} </div>
+                                <div> {tapioca.preco} </div>
+                            </Link>
+                        ))
+                    }
+                </div>
+            </Box>
 
 
             <Footer background="brand" pad="medium" justify='end'>
