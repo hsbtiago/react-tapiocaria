@@ -1,11 +1,11 @@
 import React from 'react';
 import ListaDeTapiocas from './pages/listaDeTapiocas'
 import FormDeTapioca from './pages/formDeTapioca';
-import { Switch, Route} from 'react-router-dom';
+import { HashRouter, Route} from 'react-router-dom';
 
 const Routes = () => (
     <>
-        <Switch>
+        <HashRouter basename='/'>
 
             <Route exact path="/">
                 <ListaDeTapiocas />
@@ -19,7 +19,7 @@ const Routes = () => (
                 <FormDeTapioca />
             </Route>
 
-        </Switch>
+        </HashRouter>
     </>
 );
 
