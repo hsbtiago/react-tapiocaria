@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { useParams } from 'react-router'
-import { Button, Heading, Form, FormField, Box, TextInput } from 'grommet';
+import { Button, Heading, Form, FormField, Box, TextInput, Footer } from 'grommet';
 import { FormPreviousLink, Save, Add, Trash } from 'grommet-icons';
 import api from '../../services/api';
 
-function FormTapioca({onSubmit}) {
+function FormTapioca() {
 
     const { id } = useParams()
     const [recheio, setRecheio] = useState('');
@@ -40,8 +40,7 @@ function FormTapioca({onSubmit}) {
         else {
             await api.post('/tapiocas', tapioca);
         }
-
-        onSubmit(tapioca);
+        
         setRedirect('/');
     }
 
@@ -67,10 +66,10 @@ function FormTapioca({onSubmit}) {
                         <Button
                             primary
                             icon={<Trash />}
-                            label='Excluir'      
-                            color='status-critical' 
-                            onClick={ExcluirTapioca}                 
-                            />
+                            label='Excluir'
+                            color='status-critical'
+                            onClick={ExcluirTapioca}
+                        />
                     </Box>
 
                 </Box>
@@ -89,6 +88,12 @@ function FormTapioca({onSubmit}) {
 
                         <Box direction='row' gap='medium' pad='medium' justify='end'>
 
+
+
+                        </Box>
+
+                        <Footer background="brand" pad="medium" justify='around'>
+
                             <Link to='/'>
                                 <Button
                                     icon={<FormPreviousLink />}
@@ -96,13 +101,17 @@ function FormTapioca({onSubmit}) {
                                 />
                             </Link>
 
-                            <Button type="submit" primary label="Salvar" icon={<Save />}/>
+                            <Button type="submit" primary label="Salvar" icon={<Save />} />
 
-                        </Box>
+                        </Footer>
+
+
                     </Box>
 
                 </Form>
             </Box>
+
+
 
         </>
     );
